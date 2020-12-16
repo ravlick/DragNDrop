@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+        .box {
+            width: 64px;
+            height: 64px;
+            background-color: red;
+            position: absolute;
+            display: inline-block;
+            z-index: 99;
+        }
+        .test {
+            min-width: 128px;
+            height: 64px;
+            background-color: blue;
+            bottom: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <p>The23432</p>
+    <b>242343</b>
+</div>
+<div class="box">
+    <p>The23432</p>
+    <b>242343</b>
+</div>
+<div class="box">
+    <p>The23432</p>
+    <b>242343</b>
+</div>
+<div class="box">
+    <p>The23432</p>
+    <b>242343</b>
+</div>
+
+<div class="test"></div>
+
+<script src="main.js"></script>
+<script>
+
+    let divs = document.body.querySelectorAll(".box");
+
+    divs.forEach(item => {
+        item.canDrag(true);
+    });
+
+    let test = document.body.querySelector(".test");
+    test.isAcceptable = true;
+
+    test.addEventListener("acceptitem", (e)=>{
+        test.appendChild(e.detail);
+        e.detail.style.position = "relative";
+        e.detail.style.top = 0;
+        e.detail.style.left = 0;
+        e.detail.style.zIndex = 2;
+    })
+
+    // div.addEventListener("selfdragstart",()=>{
+    //     console.log("Drag is started");
+    // });
+    //
+    // div.addEventListener("selfdrag",()=>{
+    //     console.log("Drag");
+    // });
+    //
+    // div.addEventListener("selfdragend",()=>{
+    //     console.log("Drag end");
+    // });
+
+
+</script>
+</body>
+</html>
